@@ -32,9 +32,9 @@ LIMIT=0
 
 # -- Directories vars:
 ROOT_DIR=$(git rev-parse --show-toplevel)
-KUBE_CONFIG_FILE=${ROOT_DIR}/kube_setup/kube_config.yaml
-MANIFEST_DIR=${ROOT_DIR}/kube_setup/02-timescale
-RESULT_DIR=${ROOT_DIR}/newresults/timescale-singlepod
+KUBE_CONFIG_FILE=${ROOT_DIR}/00-tsdb-bench/kube_setup/kube_config.yaml
+MANIFEST_DIR=${ROOT_DIR}/00-tsdb-bench/kube_setup/02-timescale
+RESULT_DIR=${ROOT_DIR}/00-tsdb-bench/newresults/timescale-singlepod
 QUERY_FILE=${RESULT_DIR}/queriestimescale.gz
 
 # ------------ Main script ------------

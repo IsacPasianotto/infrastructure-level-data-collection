@@ -28,11 +28,10 @@ LIMIT=0
 
 # -- Directories vars:
 ROOT_DIR=$(git rev-parse --show-toplevel)
-KUBE_CONFIG_FILE=${ROOT_DIR}/kube_setup/kube_config.yaml
-HELM_DIR=${ROOT_DIR}/kube_setup/01-influxv2
-RESULT_DIR=${ROOT_DIR}/newresults/influx
+KUBE_CONFIG_FILE=${ROOT_DIR}/00-tsdb-bench/kube_setup/kube_config.yaml
+HELM_DIR=${ROOT_DIR}/00-tsdb-bench/kube_setup/01-influxv2
+RESULT_DIR=${ROOT_DIR}/00-tsdb-bench/newresults/influx
 QUERY_FILE=${RESULT_DIR}/queriesinflux.gz
-
 # ------------ Main script ------------
 
 # ensure that tsbs_generate_data is available

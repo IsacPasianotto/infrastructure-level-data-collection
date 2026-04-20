@@ -24,7 +24,7 @@ SEED=123
 LOG_INTERVAL="1s"
 START_TIMESTAMP="2025-01-01T00:00:00Z"
 END_TIMESTAMP="2025-01-07T00:00:00Z"
-DATA_FOLDER="/orfeo/cephfs/scratch/dssc/ipasia00/timeseriesdata"
+DATA_FOLDER="/orfeo/cephfs/scratch/dssc/ipasia00/timeseriesdata"               # <-- TODO: change this accordingly to your cluster
 
 
 # ------------ Main script ------------

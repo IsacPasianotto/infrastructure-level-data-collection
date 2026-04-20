@@ -30,9 +30,9 @@ LIMIT=0
 
 # -- Directories vars:
 ROOT_DIR=$(git rev-parse --show-toplevel)
-KUBE_CONFIG_FILE=${ROOT_DIR}/kube_setup/kube_config.yaml
-HELM_DIR=${ROOT_DIR}/kube_setup/03-questdb
-RESULT_DIR=${ROOT_DIR}/newresults/questdb
+KUBE_CONFIG_FILE=${ROOT_DIR}/00-tsdb-bench/kube_setup/kube_config.yaml
+HELM_DIR=${ROOT_DIR}/00-tsdb-bench/kube_setup/03-questdb
+RESULT_DIR=${ROOT_DIR}/00-tsdb-bench/newresults/questdb
 QUERY_FILE=${RESULT_DIR}/queriesquestdb.gz
 
 # ------------ Main script ------------
@@ -148,7 +148,7 @@ do
         --workers=$NWORKERS  > $OUTPUT_FILE
 
 
-      echo "Cleaning up: uninstalling InfluxDB..."
+      echo "Cleaning up: uninstalling QuestDB..."
       helm uninstall questdb
       # Remove PVCs to ensure a clean state for the next iteration
       kubectl delete pvc --all
