@@ -1,0 +1,64 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: demo-db
+  namespace: temporaldb
+spec:
+  instances: 1
+
+  # Needed because timescale has a differnet format for container naming
+  imageCatalogRef:
+    apiGroup: postgresql.cnpg.io
+    kind: ImageCatalog
+    name: cloudnative-pg-with-timescaledb-image-catalog
+    major: 17
+
+  postgresUID: 1000
+  postgresGID: 1000  #psql has 26 as default, timescale 70
+
+  resources:
+    requests:
+      cpu: "${CORES}"
+      memory: ${RAM}
+    limits:
+      cpu: "${CORES}"
+      memory: ${RAM}
+
+
+  postgresql:
+    shared_preload_libraries:
+    - 'timescaledb'
+
+  storage:
+    size: 180Gi
+    storageClass: "rbd-nvme-replica"
+
+
+  bootstrap:
+    initdb:
+      postInitSQL:
+        - CREATE EXTENSION IF NOT EXISTS timescaledb;
+        - CREATE EXTENSION IF NOT EXISTS timescaledb_toolkit;
+        - CREATE TABLE IF NOT EXISTS metrics (time TIMESTAMPTZ NOT NULL,name TEXT NOT NULL, tags JSONB, fields JSONB );
+        - SELECT create_hypertable('metrics', 'time', if_not_exists => TRUE);
+      database: demo
+      owner: demo
+      secret:
+        name: demo-db-credentials
+
+  superuserSecret:
+    name: demo-db-credentials
+
+  affinity:
+    enablePodAntiAffinity: true
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: ImageCatalog
+metadata:
+  name: cloudnative-pg-with-timescaledb-image-catalog
+  namespace: temporaldb
+spec:
+  images:
+    - major: 17
+      image: docker.io/timescale/timescaledb-ha:pg17

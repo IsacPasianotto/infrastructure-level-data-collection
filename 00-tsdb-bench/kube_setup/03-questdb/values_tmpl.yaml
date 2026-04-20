@@ -1,0 +1,91 @@
+image:
+  repository: questdb/questdb
+  pullPolicy: IfNotPresent
+  tag: 8.3.3
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - ${KUBE_NODE_HOSTNAME}
+
+questdb:
+  env:
+    QDB_LINE_TCP_ENABLED: "true"
+  dataDir: /var/lib/questdb
+  configStorageType: ConfigMap
+  serverConfig:
+    enabled: true
+  loggingConfig:
+    enabled: false   # at least during the benchmarks
+
+service:
+  annotations:
+    metallb.universe.tf/address-pool: ${METALLB_POOL}
+  type: LoadBalancer
+  port: 9000
+  expose:
+    postgresql:
+      enabled: true
+      port: 8812
+    influxdb:
+      enabled: true
+      port: 9009
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 200Gi
+  annotations: {}
+  storageClass: "rbd-nvme-replica"
+
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: "${INGRESS_CLUSTER_ISSUER}"
+  tls:
+    - hosts:
+        - ${INGRESS_HOST}
+      secretName: ${INGRESS_SECRET_NAME}
+  ingressClassName: ${INGRESS_CLASS}
+  hosts:
+    - host: ${INGRESS_HOST}
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+
+resources:
+  requests:
+    memory: ${RAM}
+    cpu: "${CORES}"
+  limits:
+    memory: "${RAM}"
+    cpu: "${CORES}"
+
+metrics:
+  enabled: true
+  port: 9003
+
+serviceAccount:
+  create: true
+
+# understand why it is needed
+# Needed only to spawn the actual pod,
+# Need to specify some resources bencause otherwsie kubernetes
+# does not allow to spawn if some resourcesquotas are defined
+dataMigration:
+  # image:
+  #   repository: debian
+  #   pullPolicy: IfNotPresent
+  #   tag: 12.10-slim
+  resources:
+    requests:
+      memory: "1"
+      cpu: "500m"
+    limits:
+      memory: "4Gi"
+      cpu: "1"

@@ -1,0 +1,57 @@
+resources:
+  limits:
+   cpu: ${CORES}
+   memory: ${RAM}
+  requests:
+   cpu: ${CORES}
+   memory: ${RAM}
+
+adminUser:
+  organization: "${ORGANIZATION}"
+  bucket: "${BUCKET}"
+  user: "${USER}"
+  password: "${PASSWORD}"
+  retention_policy: "0s"
+  token: ${INFLUX_TOKEN}
+
+persistence:
+  enabled: true
+  storageClass: "rbd-nvme-replica"
+  accessMode: ReadWriteOnce
+  size: 180Gi
+  mountPath: /var/lib/influxdb2
+  subPath: ""
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8086
+  annotations:
+    metallb.universe.tf/address-pool: ${METALLB_POOL}
+  labels: {}
+  portName: http
+
+serviceAccount:
+  create: false
+  annotations: {}
+
+ingress:
+  enabled: true
+  className: ${INGRESS_CLASS}
+  tls: true
+  secretName: ${INGRESS_SECRET_NAME}
+  hostname: ${INGRESS_HOST}
+  annotations:
+    cert-manager.io/cluster-issuer: ${INGRESS_CLUSTER_ISSUER}
+  path: /
+
+pdb:
+  create: true
+  minAvailable: 1
+
+initScripts:
+  enabled: true
+  scripts:
+    init.sh: |+
+      #!/bin/bash
+      influx apply --force yes -u https://raw.githubusercontent.com/influxdata/community-templates/master/influxdb2_operational_monitoring/influxdb2_operational_monitoring.yml
