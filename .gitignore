@@ -1,6 +1,16 @@
 # -- Data folder
 data/
 
+
+# --- env files
+**/.env
+
+# --- venv 
+venv/
+env/
+.env/
+.venv/
+
 # Isac
 
 **/.DS_Store
