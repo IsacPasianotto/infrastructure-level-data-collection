@@ -18,3 +18,9 @@ source .env-kube
 envsubst < kube_config.tmpl > kube_config.yaml
 export KUBECONFIG=$(pwd)/kube_config.yaml
 ```
+
+## Databases Setup
+
+For each of the databased used: `QuestDB`, `TimescaleDB`, `InfluxDB`, there is the corresponding directory with the deployment configuration and instructions.
+Since all of the databases are deployed and then immediately destroyed after the benchmark, a fac simile of the env vars with dummy vales is provided in the .env file of each folder. 
+These values are not meant to be used in any production environment. 
