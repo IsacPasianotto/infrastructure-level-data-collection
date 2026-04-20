@@ -22,8 +22,9 @@ SLEEP_DURATION=120  # 2 minutes
 
 # -- repo dirs
 ROOT_DIR="$(git rev-parse --show-toplevel)"
-OUTPUT_DIR="${ROOT_DIR}/02-ior-bench/results/${PARTITION}/scratch"
-CONFIG_DIR="${ROOT_DIR}/02-ior-bench/configs/scratch"
+OUTPUT_DIR="${ROOT_DIR}/03-ior-bench/results/${PARTITION}/scratch"
+CONFIG_DIR="${ROOT_DIR}/03-ior-bench/configs/scratch"
+DB_URL="https://timeseriesdb.dev.rd.areasciencepark.it"     # TODO: change this accordingly to your cluster setup
 
 # -- scenarios to run (config files)
 SCENARIOS=(
@@ -84,10 +85,10 @@ done
 separator
 
 QUERY="INSERT INTO experiments VALUES (now(), rnd_uuid4(), '$SLURM_JOB_ID', '$SLURM_JOB_NODELIST', 'START', 'IOR-idle');"
-exec_query "$QUERY" "https://timeseriesdb.dev.rd.areasciencepark.it"
+exec_query "$QUERY" "${DB_URL}"
 log "sleeping 10 minutes to have some idle metrics"
 sleep 600
 QUERY="INSERT INTO experiments VALUES (now(), rnd_uuid4(), '$SLURM_JOB_ID', '$SLURM_JOB_NODELIST', 'END', 'IOR-idle');"
-exec_query "$QUERY" "https://timeseriesdb.dev.rd.areasciencepark.it"
+exec_query "$QUERY" "${DB_URL}"
 section "FINISH"
 
