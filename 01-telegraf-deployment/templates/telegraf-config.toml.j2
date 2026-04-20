@@ -1,0 +1,73 @@
+[agent]
+  interval = "1s"
+  round_interval = true
+  metric_batch_size = 1000
+  metric_buffer_limit = 10000
+  precision = "1ms"
+  collection_jitter = "0s"
+  flush_interval = "10s"
+  flush_jitter = "5s"
+
+# QuestDB: ILP over HTTP (InfluxDB v1 compatible) endpoint: /write
+[[outputs.influxdb]]
+  urls = ["https://timeseriesdb.dev.rd.areasciencepark.it"]
+  database = "telegraf"
+  skip_database_creation = true
+  timeout = "120s"
+  insecure_skip_verify = true
+  content_encoding = "identity"
+
+[[inputs.cpu]]
+  interval = "1s"
+  percpu = true
+  totalcpu = true
+  collect_cpu_time = false
+  report_active = false
+  core_tags = true
+
+[[inputs.mem]]
+  interval = "1s"
+
+[[inputs.exec]]
+  interval = "1s"
+  timeout  = "10s"
+  commands = ["bash /etc/telegraf/parse.sh"]
+  data_format = "influx"
+
+{% if psu_dell > 1 %}
+[[inputs.exec]]
+  interval = "1s"
+  timeout  = "10s"
+  commands = ["bash /etc/telegraf/psu.sh"]
+  data_format = "influx"
+{% endif %}
+
+{% if diskio %}
+[[inputs.diskio]]
+  interval = "1s"
+  devices = ["sd?", "nvme[0-9]n[0-9]*", "nvme[0-9][0-9]n[0-9]*"]
+  skip_serial_number = true
+{% endif %}
+
+{% if has_gpu %}
+[[inputs.nvidia_smi]]
+  interval = "1s"
+{% endif %}
+
+[[inputs.infiniband]]
+  interval = "1s"
+  gather_rdma = true
+
+[[inputs.net]]
+   ## By default, telegraf gathers stats from any up interface (excluding loopback)
+  ## Setting interfaces will tell it to gather these explicit interfaces,
+  ## regardless of status. When specifying an interface, glob-style
+  ## patterns are also supported.
+  interfaces = ["bond0", "ibp*"]
+  ignore_protocol_stats = true
+
+[[inputs.turbostat]]
+  path = "/usr/bin/turbostat"
+  interval = "1s"
+  use_sudo = true
+

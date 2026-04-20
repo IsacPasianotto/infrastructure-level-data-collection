@@ -1,0 +1,36 @@
+---
+- name: Remove telegraf quadlet setup (keep podman)
+  hosts: all
+  become: true
+
+  tasks:
+
+    # Ignore errors to keep the playbook run if target an already
+    # disabled node
+    - name: Stop and disable quadlet telegraf service
+      ansible.builtin.systemd:
+        name: quadlet-telegraf
+        state: stopped
+        enabled: false
+      ignore_errors: true
+
+    - name: Remove quadlet container file
+      ansible.builtin.file:
+        path: /etc/containers/systemd/quadlet-telegraf.container
+        state: absent
+
+    - name: Remove telegraf directory
+      ansible.builtin.file:
+        path: /root/telegraf
+        state: absent
+
+    - name: Reload systemd
+      ansible.builtin.systemd:
+        daemon_reload: true
+
+    # Remove orphan containers, if any
+    - name: Remove telegraf container (if exists)
+      ansible.builtin.command:
+        cmd: podman rm -f {{ container_name }}
+      ignore_errors: true
+

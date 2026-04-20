@@ -1,0 +1,77 @@
+---
+- name: Install or update telegraf services on the cluster
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Ensure podman is installed
+      ansible.builtin.dnf:
+        name: podman
+        state: present
+      when:
+        - ansible_facts.os_family == "RedHat"
+      # Some nodes will fail because there fail to connect to the repository, but they have podman already installed, so we can ignore errors here
+      ignore_errors: true
+
+    - name: Make sure that /root/ansible exists
+      ansible.builtin.file:
+        path: /root/telegraf
+        state: directory
+        mode: '0750'
+
+    - name: Make sure that /etc/containers/systemd exists
+      ansible.builtin.file:
+        path: /etc/containers/systemd
+        state: directory
+        mode: '0750'
+
+
+    - name: Generate the telegraf.conf file
+      ansible.builtin.template:
+        src: telegraf-config.toml.j2
+        dest: /root/telegraf/telegraf.config
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Generate the telegraf.container file
+      ansible.builtin.template:
+        src: telegraf-quadlet.container.j2
+        dest: /etc/containers/systemd/quadlet-telegraf.container
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Copy the parse.sh file to nodes
+      ansible.builtin.copy:
+        src: ./files/parse.sh
+        dest: /root/telegraf/parse.sh
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Copy the psu.sh file to nodes
+      ansible.builtin.copy:
+        src: ./files/psu.sh
+        dest: /root/telegraf/psu.sh
+        owner: root
+        group: root
+        mode: '0644'
+      when:
+        - psu_dell > 1
+
+    - name: Reload systemd
+      ansible.builtin.systemd:
+        daemon_reload: true
+
+    - name: Start quadlet telegraf
+      ansible.builtin.systemd:
+        name: quadlet-telegraf
+        state: started
+        enabled: true
+
+    - name: Restart telegraf container
+      ansible.builtin.command:
+        cmd: podman stop {{ container_name }}
+      ignore_errors: true

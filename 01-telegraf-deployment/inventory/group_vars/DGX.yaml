@@ -1,0 +1,7 @@
+---
+partition: DGX
+
+cpu_type: intel
+has_gpu: true
+diskio: false
+psu_dell: 6

@@ -12,9 +12,17 @@ export DOCKERHUB_USERNAME=<your_username>
 
 > Reporducibility disclaimer: In the `templates/telegraf-config.toml.j2` file, you may need to adjust the db url accordingly to your setup. 
 > Obviously, you also need to adjust the inventory file to match your setup.
+
 ```
 ansible-playbook --key-file=$HOME/.ssh/<your_key> install.yaml
 ```
+
+To remove all the running containers:
+
+```
+ansible-playbook --key-file=$HOME/.ssh/<your_key> remove.yaml
+```
+
 
 And then deploy the content of the `server-wide-metrics` directory with
 

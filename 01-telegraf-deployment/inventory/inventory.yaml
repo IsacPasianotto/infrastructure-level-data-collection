@@ -1,0 +1,104 @@
+all:
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  children:
+    EPYC:
+      hosts:
+        epyc001: { ansible_host: xxx.xxx.xxx.xxx }
+        epyc002: { ansible_host: xxx.xxx.xxx.xxx }
+        epyc003: { ansible_host: xxx.xxx.xxx.xxx }
+        epyc004: { ansible_host: xxx.xxx.xxx.xxx }
+        epyc005: { ansible_host: xxx.xxx.xxx.xxx }
+        epyc006: { ansible_host: xxx.xxx.xxx.xxx }
+        # epyc007: { ansible_host: xxx.xxx.xxx.xxx }.  # Unreachable
+        epyc008: { ansible_host: xxx.xxx.xxx.xxx }
+
+    THIN:
+      hosts:
+        thin001: { ansible_host: xxx.xxx.xxx.xxx }
+        thin002: { ansible_host: xxx.xxx.xxx.xxx }
+        thin003: { ansible_host: xxx.xxx.xxx.xxx }
+        # # thin004: { ansible_host: xxx.xxx.xxx.xxx }  # proxmox
+        # # thin005: { ansible_host: xxx.xxx.xxx.xxx }  # kube
+        # # thin006: { ansible_host: xxx.xxx.xxx.xxx }  # kube
+        thin007: { ansible_host: xxx.xxx.xxx.xxx }
+        thin008: { ansible_host: xxx.xxx.xxx.xxx }
+        thin009: { ansible_host: xxx.xxx.xxx.xxx }
+        thin010: { ansible_host: xxx.xxx.xxx.xxx }
+        fat001: { ansible_host: xxx.xxx.xxx.xxx }
+        fat002: { ansible_host: xxx.xxx.xxx.xxx }
+
+    GENOA:
+      hosts:
+        genoa001: { ansible_host: xxx.xxx.xxx.xxx }
+        genoa002: { ansible_host: xxx.xxx.xxx.xxx }
+        genoa003: { ansible_host: xxx.xxx.xxx.xxx }
+        genoa004: { ansible_host: xxx.xxx.xxx.xxx }
+        genoa005: { ansible_host: xxx.xxx.xxx.xxx }
+        genoa006: { ansible_host: xxx.xxx.xxx.xxx }
+        genoa007: { ansible_host: xxx.xxx.xxx.xxx }
+        genoa008: { ansible_host: xxx.xxx.xxx.xxx }
+        genoa009: { ansible_host: xxx.xxx.xxx.xxx }
+        genoa010: { ansible_host: xxx.xxx.xxx.xxx }
+        genoa011: { ansible_host: xxx.xxx.xxx.xxx }
+        genoa012: { ansible_host: xxx.xxx.xxx.xxx }
+        genoa013: { ansible_host: xxx.xxx.xxx.xxx }
+
+    GPU:
+      hosts:
+        gpu001: { ansible_host: xxx.xxx.xxx.xxx }
+        gpu002: { ansible_host: xxx.xxx.xxx.xxx }
+        gpu003: { ansible_host: xxx.xxx.xxx.xxx }
+        gpu004: { ansible_host: xxx.xxx.xxx.xxx }    # kdevel
+
+    DGX:
+      hosts:
+        # dgx001: { ansible_host: xxx.xxx.xxx.xxx }
+        dgx002: { ansible_host: xxx.xxx.xxx.xxx }
+        dgx003: { ansible_host: xxx.xxx.xxx.xxx }
+        dgx004: { ansible_host: xxx.xxx.xxx.xxx }
+        dgx005: { ansible_host: xxx.xxx.xxx.xxx }   # kdevel
+
+    CEPH:
+      hosts:
+        ceph01: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph02: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph03: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph04: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph05: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph06: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph07: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph08: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph09: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph10: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph11: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph12: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph13: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph14: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph15: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph16: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph17: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph18: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph19: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph20: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph21: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph22: { ansible_host: xxx.xxx.xxx.xxx }
+        ceph23: { ansible_host: xxx.xxx.xxx.xxx }
+
+    KDEVEL:
+      hosts:
+        kdevel-00: { ansible_host: xxx.xxx.xxx.xxx }
+        kdevel-01: { ansible_host: xxx.xxx.xxx.xxx }  # only one to be sure
+        kdevel-02: { ansible_host: xxx.xxx.xxx.xxx }
+
+
+    # KPROD:
+    #   hosts:
+    #     kub01: { ansible_host: xxx.xxx.xxx.xxx }    # only one to be sure
+    #     kub02: { ansible_host: xxx.xxx.xxx.xxx }
+
+    # # PVE  :
+    # #   hosts:
+    # #     pve00: { ansible_host: xxx.xxx.xxx.xxx }
+    # #     pve01: { ansible_host: xxx.xxx.xxx.xxx }
+    # #     pve02: { ansible_host: xxx.xxx.xxx.xxx }

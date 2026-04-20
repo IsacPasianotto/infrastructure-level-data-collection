@@ -1,0 +1,6 @@
+---
+
+debug: false
+
+container_image: "docker.io/pasianeight/telegraf-monitoring"
+container_name: "telegraf-quadlet"

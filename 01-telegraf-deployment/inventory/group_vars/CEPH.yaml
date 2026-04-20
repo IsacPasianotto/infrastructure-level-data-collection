@@ -1,0 +1,7 @@
+---
+partition: CEPH
+
+cpu_type: intel
+has_gpu: false
+diskio: true
+psu_dell: 2

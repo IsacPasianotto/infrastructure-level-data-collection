@@ -1,0 +1,7 @@
+---
+partition: THIN
+
+cpu_type: intel
+has_gpu: false
+diskio: false
+psu_dell: 2
