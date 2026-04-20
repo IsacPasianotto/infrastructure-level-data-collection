@@ -16,3 +16,13 @@
 
 Notes:
 - The istance of QuestDB used to ingestion in all the data the identical to the one deployed in the `00-tsdb-bench` directory, so the configuration and deployment instructions are the same.
+
+
+# TODOs:
+
+- [ ] 02-ior-bench:
+  - [ ] Aggiungere i notebook sistemati con il post-process dei dati
+- [ ] 03-llm-inference:
+  - [ ] tutto
+- [ ] 04-data-etl:
+  - [ ] tutto (prednere da scratch orfeo)
