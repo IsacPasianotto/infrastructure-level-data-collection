@@ -1,0 +1,8 @@
+Run complete after 95000 queries with 8 workers (Overall query rate 3188.17 queries/sec):
+TimescaleDB 5 cpu metric(s), random    1 hosts, random 12h0m0s by 1m:
+min:     1.26ms, med:     2.47ms, mean:     2.45ms, max:   10.02ms, stddev:     0.30ms, sum: 232.8sec, count: 95000
+all queries                                                         :
+min:     1.26ms, med:     2.47ms, mean:     2.45ms, max:   10.02ms, stddev:     0.30ms, sum: 232.8sec, count: 95000
+Saving High Dynamic Range (HDR) Histogram of Response Latencies to /orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/timescale-singlepod/timescalesinglepod_latencies_ram64_cores16_iter7.json
+wall clock time: 31.378684sec
+Saving results json file to /orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/timescale-singlepod/timescalesinglepod_ram64_cores16_iter7.json

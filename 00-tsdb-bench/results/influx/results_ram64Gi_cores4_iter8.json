@@ -1,0 +1,48 @@
+{
+ "ResultFormatVersion": "0.1",
+ "RunnerConfig": {
+  "DBName": "default",
+  "Limit": 100000,
+  "LimitRPS": 100000,
+  "MemProfile": "",
+  "HDRLatenciesFile": "/orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/influx/hdr_latencies_ram64Gi_cores4_iter8.json",
+  "Workers": 8,
+  "PrintResponses": false,
+  "Debug": 0,
+  "FileName": "/orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/influx/queriesinflux.gz",
+  "BurnIn": 5000,
+  "PrintInterval": 100,
+  "PrewarmQueries": false,
+  "ResultsFile": "/orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/influx/results_ram64Gi_cores4_iter8.json"
+ },
+ "StartTime": 1761273498000,
+ "EndTime": 1761273599000,
+ "DurationMillis": 100338,
+ "Totals": {
+  "burnIn": 5000,
+  "limit": 100000,
+  "overallQuantiles": {
+   "Influx_5_cpu_metric_s_random_1_hosts_random_12h0m0s_by_1m": {
+    "q0": 0,
+    "q100": 139.111,
+    "q50": 4.502,
+    "q95": 12.457,
+    "q99": 54.887,
+    "q999": 95.851
+   },
+   "all_queries": {
+    "q0": 0,
+    "q100": 139.111,
+    "q50": 4.502,
+    "q95": 12.457,
+    "q99": 54.887,
+    "q999": 95.851
+   }
+  },
+  "overallQueryRates": {
+   "Influx_5_cpu_metric_s_random_1_hosts_random_12h0m0s_by_1m": 946.7956925224244,
+   "all_queries": 946.7956925224244
+  },
+  "prewarmQueries": false
+ }
+}

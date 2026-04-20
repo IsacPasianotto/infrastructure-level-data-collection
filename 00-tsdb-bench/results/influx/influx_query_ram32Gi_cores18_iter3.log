@@ -1,0 +1,8 @@
+Run complete after 95000 queries with 8 workers (Overall query rate 2547.68 queries/sec):
+Influx 5 cpu metric(s), random    1 hosts, random 12h0m0s by 1m:
+min:     0.80ms, med:     1.55ms, mean:     1.83ms, max:   58.77ms, stddev:     2.81ms, sum: 174.1sec, count: 95000
+all queries                                                    :
+min:     0.80ms, med:     1.55ms, mean:     1.83ms, max:   58.77ms, stddev:     2.81ms, sum: 174.1sec, count: 95000
+Saving High Dynamic Range (HDR) Histogram of Response Latencies to /orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/influx/hdr_latencies_ram32Gi_cores18_iter3.json
+wall clock time: 39.292272sec
+Saving results json file to /orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/influx/results_ram32Gi_cores18_iter3.json

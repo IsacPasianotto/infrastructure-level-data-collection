@@ -1,0 +1,48 @@
+{
+ "ResultFormatVersion": "0.1",
+ "RunnerConfig": {
+  "DBName": "newdb",
+  "Limit": 100000,
+  "LimitRPS": 100000,
+  "MemProfile": "",
+  "HDRLatenciesFile": "/orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/timescale-singlepod/timescalesinglepod_latencies_ram8_cores18_iter5.json",
+  "Workers": 8,
+  "PrintResponses": false,
+  "Debug": 0,
+  "FileName": "/orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/timescale-singlepod/queriestimescaledb.gz",
+  "BurnIn": 5000,
+  "PrintInterval": 100,
+  "PrewarmQueries": false,
+  "ResultsFile": "/orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/timescale-singlepod/timescalesinglepod_ram8_cores18_iter5.json"
+ },
+ "StartTime": 1761430972000,
+ "EndTime": 1761431005000,
+ "DurationMillis": 32526,
+ "Totals": {
+  "burnIn": 5000,
+  "limit": 100000,
+  "overallQuantiles": {
+   "TimescaleDB_5_cpu_metric_s_random_1_hosts_random_12h0m0s_by_1m": {
+    "q0": 0,
+    "q100": 12.685,
+    "q50": 2.502,
+    "q95": 2.857,
+    "q99": 3.075,
+    "q999": 4.147
+   },
+   "all_queries": {
+    "q0": 0,
+    "q100": 12.685,
+    "q50": 2.502,
+    "q95": 2.857,
+    "q99": 3.075,
+    "q999": 4.147
+   }
+  },
+  "overallQueryRates": {
+   "TimescaleDB_5_cpu_metric_s_random_1_hosts_random_12h0m0s_by_1m": 2920.7739406355545,
+   "all_queries": 2920.7739406355545
+  },
+  "prewarmQueries": false
+ }
+}

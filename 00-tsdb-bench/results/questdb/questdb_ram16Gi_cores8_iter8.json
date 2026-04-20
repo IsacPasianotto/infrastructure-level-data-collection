@@ -1,0 +1,48 @@
+{
+ "ResultFormatVersion": "0.1",
+ "RunnerConfig": {
+  "DBName": "benchmark",
+  "Limit": 100000,
+  "LimitRPS": 100000,
+  "MemProfile": "",
+  "HDRLatenciesFile": "/orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/questdb/questdb_latencies_ram16Gi_cores8_iter8.json",
+  "Workers": 8,
+  "PrintResponses": false,
+  "Debug": 0,
+  "FileName": "/orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/questdb/queriesquestdb.gz",
+  "BurnIn": 5000,
+  "PrintInterval": 100,
+  "PrewarmQueries": false,
+  "ResultsFile": "/orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/questdb/questdb_ram16Gi_cores8_iter8.json"
+ },
+ "StartTime": 1762069036000,
+ "EndTime": 1762069157000,
+ "DurationMillis": 121300,
+ "Totals": {
+  "burnIn": 5000,
+  "limit": 100000,
+  "overallQuantiles": {
+   "QuestDB_5_cpu_metric_s_random_1_hosts_random_12h0m0s_by_1m": {
+    "q0": 0,
+    "q100": 715.999,
+    "q50": 1.459,
+    "q95": 27.73,
+    "q99": 41.737,
+    "q999": 590.463
+   },
+   "all_queries": {
+    "q0": 0,
+    "q100": 715.999,
+    "q50": 1.459,
+    "q95": 27.73,
+    "q99": 41.737,
+    "q999": 590.463
+   }
+  },
+  "overallQueryRates": {
+   "QuestDB_5_cpu_metric_s_random_1_hosts_random_12h0m0s_by_1m": 783.1822735075376,
+   "all_queries": 783.1822735075376
+  },
+  "prewarmQueries": false
+ }
+}

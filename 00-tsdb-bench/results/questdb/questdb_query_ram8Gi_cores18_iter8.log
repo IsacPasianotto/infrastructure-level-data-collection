@@ -1,0 +1,9 @@
+Added index to hostname column of cpu table
+Run complete after 95000 queries with 8 workers (Overall query rate 968.94 queries/sec):
+QuestDB 5 cpu metric(s), random    1 hosts, random 12h0m0s by 1m:
+min:     1.07ms, med:     1.48ms, mean:     4.94ms, max:  476.29ms, stddev:    17.66ms, sum: 469.4sec, count: 95000
+all queries                                                     :
+min:     1.07ms, med:     1.48ms, mean:     4.94ms, max:  476.29ms, stddev:    17.66ms, sum: 469.4sec, count: 95000
+Saving High Dynamic Range (HDR) Histogram of Response Latencies to /orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/questdb/questdb_latencies_ram8Gi_cores18_iter8.json
+wall clock time: 103.275744sec
+Saving results json file to /orfeo/cephfs/home/dssc/ipasia00/tsdb-bench/newresults/questdb/questdb_ram8Gi_cores18_iter8.json
