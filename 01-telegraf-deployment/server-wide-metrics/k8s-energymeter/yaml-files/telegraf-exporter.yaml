@@ -1,0 +1,162 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: telegraf-format-row
+  namespace: temporaldb
+data:
+  format_row.sh: |
+    #!/bin/bash
+    SVC_NAME="${SVC_NAME:-localhost}"
+    SVC_PORT="${SVC_PORT:-8089}"
+    METRICS_PATH="${METRICS_PATH:-/metrics}"
+
+    curl -s "http://${SVC_NAME}:${SVC_PORT}${METRICS_PATH}" | awk '
+    function esc_tag(s,    t) {
+      t=s
+      gsub(/\\/,"\\\\",t)
+      gsub(/,/,"\\,",t)
+      gsub(/ /,"\\ ",t)
+      gsub(/=/,"\\=",t)
+      return t
+    }
+
+    BEGIN { desc="" }
+
+    /^[[:space:]]*#/ {
+      desc = $0
+      sub(/^[[:space:]]*#[[:space:]]*/, "", desc)
+      next
+    }
+
+    /^vcId_[0-9]+/ {
+      line = $0
+
+      # vcid: numero dopo vcId_
+      if (match(line, /^vcId_[0-9]+/)) {
+        vcid = substr(line, 6, RLENGTH-5)
+      } else {
+        next
+      }
+
+      # unit: se presente unit="..."
+      unit = ""
+      if (match(line, /unit="[^"]*"/)) {
+        tmp = substr(line, RSTART, RLENGTH)
+        sub(/^unit="/, "", tmp)
+        sub(/"$/, "", tmp)
+        unit = tmp
+      }
+
+      # valore: ultimo campo
+      n = split(line, a, /[[:space:]]+/)
+      val = a[n]
+
+      # se unit è vuota, non includere il tag unit (tag vuoti non sono validi)
+      if (unit == "") {
+        printf("energy_meter,description=%s,vcID=%s value=%s\n",
+              esc_tag(desc), esc_tag(vcid), val)
+      } else {
+        printf("energy_meter,description=%s,vcID=%s,unit=%s value=%s\n",
+              esc_tag(desc), esc_tag(vcid), esc_tag(unit), val)
+      }
+    }
+    '
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: telegraf-config
+  namespace: temporaldb
+data:
+  telegraf.conf: |
+    [agent]
+      interval = "30s"
+      round_interval = true
+      metric_batch_size = 1000
+      metric_buffer_limit = 10000
+      precision = "1ms"
+      collection_jitter = "0s"
+      flush_interval = "10s"
+      flush_jitter = "5s"
+
+    [[outputs.influxdb]]
+      urls = ["https://timeseriesdb.dev.rd.areasciencepark.it"]
+      database = "telegraf"
+      skip_database_creation = true
+      timeout = "120s"
+      insecure_skip_verify = true
+      content_encoding = "identity"
+
+    [[inputs.exec]]
+      interval = "30s"
+      timeout  = "120s"
+      commands = ["bash /etc/telegraf/format_row.sh"]
+      data_format = "influx"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telegraf-energymeter
+  namespace: temporaldb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: telegraf-energymeter
+  template:
+    metadata:
+      labels:
+        app: telegraf-energymeter
+    spec:
+      containers:
+        - name: telegraf-energymeter
+          image: telegraf:latest
+          env:
+            - name: SVC_NAME
+              value: "energymeter-svc.temporaldb.svc.cluster.local"
+            - name: SVC_PORT
+              value: "8089"
+            - name: METRICS_PATH
+              value: "/metrics"
+          command: ["telegraf"]
+          args: ["--config", "/etc/telegraf/telegraf.conf"]
+          # command: ["bash", "-lc"]
+          # args:
+          #   - |
+          #     sleep infinity
+          volumeMounts:
+            - name: telegraf-config-vol
+              mountPath: /etc/telegraf/telegraf.conf
+              subPath: telegraf.conf
+            - name: telegraf-format-row-vol
+              mountPath: /etc/telegraf/format_row.sh
+              subPath: format_row.sh
+
+          # securityContext:
+          #   allowPrivilegeEscalation: false
+          #   capabilities:
+          #     drop: ["ALL"]
+
+          resources:
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+            requests:
+              cpu: "250m"
+              memory: "128Mi"
+
+      volumes:
+        - name: telegraf-config-vol
+          configMap:
+            name: telegraf-config
+            items:
+              - key: telegraf.conf
+                path: telegraf.conf
+
+        - name: telegraf-format-row-vol
+          configMap:
+            name: telegraf-format-row
+            defaultMode: 0755
+            items:
+              - key: format_row.sh
+                path: format_row.sh

@@ -1,0 +1,23 @@
+[Unit]
+Description=Pdu Exporter Quadlet Container
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=docker.io/pasianeight/telegraf-ssh:0.1.0
+ContainerName=pdu-exporter-telegraf-quadlet
+
+Network=host
+
+# HOME dell'utente telegraf è /etc/telegraf
+Volume=/root/isac/pdu-quadlet/.ssh:/etc/telegraf/.ssh:ro,Z
+Volume=/root/isac/pdu-quadlet/src:/etc/telegraf:ro,Z
+
+PodmanArgs=--privileged
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target

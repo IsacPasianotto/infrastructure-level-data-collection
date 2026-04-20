@@ -23,8 +23,8 @@ To remove all the running containers:
 ansible-playbook --key-file=$HOME/.ssh/<your_key> remove.yaml
 ```
 
+At this point, the only missing part is the content of the `server-wide-metrics` which is reported as reference but is extremely specific to the the serverd used.
 
-And then deploy the content of the `server-wide-metrics` directory with
 
 ### Manual install
 
