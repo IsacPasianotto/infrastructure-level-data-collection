@@ -38,8 +38,8 @@ SCENARIOS=(
 
 mkdir -p "${OUTPUT_DIR}"
 cd "${ROOT_DIR}"
-source "${ROOT_DIR}/utils/logging.sh"
-source "${ROOT_DIR}/utils/run_exp.sh"
+source "${ROOT_DIR}/02-ior-bench/utils/logging.sh"
+source "${ROOT_DIR}/02-ior-bench//utils/run_exp.sh"
 
 # -------  Load necessary modules --------
 module load epyc/hdf5/1.14.6

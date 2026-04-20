@@ -7,9 +7,10 @@
 .
 ├── 00-tsdb-bench                   --> Time-series database benchmark for data ingestion layer
 ├── 01-telegraf-deployment          --> Telegraf deployment and configuration for data collection
-├── 02-ior-bench                    --> I/O performance benchmark case of study
-├── 03-llm-inference                --> LLM inference case of study
-├── 04-data-etl                     --> Data Extraction, Transformation, and Loading pipeline
+├── 02-get-data.sh                  --> Script to download data from Zenodo, used in the analysis of the case of study
+├── 03-ior-bench                    --> I/O performance benchmark case of study
+├── 04-llm-inference                --> LLM inference case of study
+├── 05-data-etl                     --> Data Extraction, Transformation, and Loading pipeline
 └── README.md                       --> This file
 ```
 
@@ -20,9 +21,9 @@ Notes:
 
 # TODOs:
 
-- [ ] 02-ior-bench:
+- [ ] 03-ior-bench:
   - [ ] Aggiungere i notebook sistemati con il post-process dei dati
-- [ ] 03-llm-inference:
+- [ ] 04-llm-inference:
   - [ ] tutto
-- [ ] 04-data-etl:
+- [ ] 05-data-etl:
   - [ ] tutto (prednere da scratch orfeo)
