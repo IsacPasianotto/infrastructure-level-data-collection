@@ -1,0 +1,40 @@
+IOR-4.0.0: MPI Coordinated Test of Parallel I/O
+Began               : Fri Mar  6 08:18:09 2026
+Command line        : ior -f /orfeo/cephfs/home/area/ipasia00/ior-benchs/configs/scratch/writeread_rand_4k_shared.ini -a mpiio -O summaryFile=/orfeo/cephfs/home/area/ipasia00/ior-benchs/results/GENOA/scratch/writeread_rand_4k_shared_mpiio_summary.txt_6 -N 128
+Machine             : Linux genoa007.hpc.rd.areasciencepark.it
+TestID              : 0
+StartTime           : Fri Mar  6 08:18:09 2026
+Path                : /orfeo/cephfs/scratch/area/ipasia00/iorfiles/reads/ior_readme_shared
+FS                  : 4924.2 TiB   Used FS: 31.9%   Inodes: 606.7 Mi   Used Inodes: 100.0%
+
+Options: 
+api                 : mpiio
+apiVersion          : (3.1)
+test filename       : /orfeo/cephfs/scratch/area/ipasia00/iorfiles/reads/ior_readme_shared
+access              : single-shared-file
+type                : independent
+segments            : 1
+ordering in a file  : random
+ordering inter file : no tasks offsets
+nodes               : 2
+tasks               : 128
+clients per node    : 64
+repetitions         : 1
+xfersize            : 4096 bytes
+blocksize           : 6 GiB
+aggregate filesize  : 768 GiB
+stonewallingTime    : 180
+stoneWallingWearOut : 0
+
+Results: 
+
+access    bw(MiB/s)  IOPS       Latency(s)  block(KiB) xfer(KiB)  open(s)    wr/rd(s)   close(s)   total(s)   iter
+------    ---------  ----       ----------  ---------- ---------  --------   --------   --------   --------   ----
+write     0.108550   27.81      0.000120    6291456    4.00       0.117208   189.35     0.002516   189.47     0   
+read      2.36       608.42     0.000003    6291456    4.00       0.049488   8.65       4.85       8.70       0   
+
+Summary of all tests:
+Operation   Max(MiB)   Min(MiB)  Mean(MiB)     StdDev   Max(OPs)   Min(OPs)  Mean(OPs)     StdDev    Mean(s) Stonewall(s) Stonewall(MiB) Test# #Tasks tPN reps fPP reord reordoff reordrand seed segcnt   blksiz    xsize aggs(MiB)   API RefNum
+write           0.11       0.11       0.11       0.00      27.79      27.79      27.79       0.00  189.46520         NA            NA     0    128  64    1   0     0        1         0    0      1 6442450944     4096      20.6 mpiio      0
+read            2.36       2.36       2.36       0.00     604.89     604.89     604.89       0.00    8.70404         NA            NA     0    128  64    1   0     0        1         0    0      1 6442450944     4096      20.6 mpiio      0
+Finished            : Fri Mar  6 08:21:30 2026

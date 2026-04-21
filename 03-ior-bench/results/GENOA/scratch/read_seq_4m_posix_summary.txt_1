@@ -1,0 +1,38 @@
+IOR-4.0.0: MPI Coordinated Test of Parallel I/O
+Began               : Thu Mar  5 21:34:49 2026
+Command line        : ior -f /orfeo/cephfs/home/area/ipasia00/ior-benchs/configs/scratch/read_seq_4m.ini -a posix -O summaryFile=/orfeo/cephfs/home/area/ipasia00/ior-benchs/results/GENOA/scratch/read_seq_4m_posix_summary.txt_1 -N 128
+Machine             : Linux genoa007.hpc.rd.areasciencepark.it
+TestID              : 0
+StartTime           : Thu Mar  5 21:34:49 2026
+Path                : /orfeo/cephfs/scratch/area/ipasia00/iorfiles/reads/ior_readme.00000000
+FS                  : 4924.2 TiB   Used FS: 30.2%   Inodes: 590.3 Mi   Used Inodes: 100.0%
+
+Options: 
+api                 : posix
+apiVersion          : 
+test filename       : /orfeo/cephfs/scratch/area/ipasia00/iorfiles/reads/ior_readme
+access              : file-per-process
+type                : independent
+segments            : 1
+ordering in a file  : sequential
+ordering inter file : no tasks offsets
+nodes               : 2
+tasks               : 128
+clients per node    : 64
+repetitions         : 1
+xfersize            : 4 MiB
+blocksize           : 20 GiB
+aggregate filesize  : 2.50 TiB
+stonewallingTime    : 180
+stoneWallingWearOut : 0
+
+Results: 
+
+access    bw(MiB/s)  IOPS       Latency(s)  block(KiB) xfer(KiB)  open(s)    wr/rd(s)   close(s)   total(s)   iter
+------    ---------  ----       ----------  ---------- ---------  --------   --------   --------   --------   ----
+read      3831       957.79     0.035158    20971520   4096       0.002171   180.36     0.355394   180.36     0   
+
+Summary of all tests:
+Operation   Max(MiB)   Min(MiB)  Mean(MiB)     StdDev   Max(OPs)   Min(OPs)  Mean(OPs)     StdDev    Mean(s) Stonewall(s) Stonewall(MiB) Test# #Tasks tPN reps fPP reord reordoff reordrand seed segcnt   blksiz    xsize aggs(MiB)   API RefNum
+read         3831.18    3831.18    3831.18       0.00     957.79     957.79     957.79       0.00  180.35605         NA            NA     0    128  64    1   1     0        1         0    0      1 21474836480  4194304  690976.0 posix      0
+Finished            : Thu Mar  5 21:37:50 2026

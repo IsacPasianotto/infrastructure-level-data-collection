@@ -1,6 +1,7 @@
 # -- Data folder
-data/
-
+/data/*
+!/data/experiments/
+!/data/experiments/experiments.parquet
 
 # --- env files
 **/.env
@@ -11,6 +12,8 @@ env/
 .env/
 .venv/
 
-# Isac
+# --- jupyter
+**/.ipynb_checkpoints/
 
+# Isac
 **/.DS_Store

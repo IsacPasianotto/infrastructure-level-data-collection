@@ -1,0 +1,40 @@
+IOR-4.0.0: MPI Coordinated Test of Parallel I/O
+Began               : Fri Mar  6 01:05:20 2026
+Command line        : ior -f /orfeo/cephfs/home/area/ipasia00/ior-benchs/configs/scratch/writeread_rand_4k_shared.ini -a posix -O summaryFile=/orfeo/cephfs/home/area/ipasia00/ior-benchs/results/GENOA/scratch/writeread_rand_4k_shared_posix_summary.txt_9 -N 128
+Machine             : Linux genoa007.hpc.rd.areasciencepark.it
+TestID              : 0
+StartTime           : Fri Mar  6 01:05:20 2026
+Path                : /orfeo/cephfs/scratch/area/ipasia00/iorfiles/reads/ior_readme_shared
+FS                  : 4924.2 TiB   Used FS: 30.3%   Inodes: 592.6 Mi   Used Inodes: 100.0%
+
+Options: 
+api                 : posix
+apiVersion          : 
+test filename       : /orfeo/cephfs/scratch/area/ipasia00/iorfiles/reads/ior_readme_shared
+access              : single-shared-file
+type                : independent
+segments            : 1
+ordering in a file  : random
+ordering inter file : no tasks offsets
+nodes               : 2
+tasks               : 128
+clients per node    : 64
+repetitions         : 1
+xfersize            : 4096 bytes
+blocksize           : 6 GiB
+aggregate filesize  : 768 GiB
+stonewallingTime    : 180
+stoneWallingWearOut : 0
+
+Results: 
+
+access    bw(MiB/s)  IOPS       Latency(s)  block(KiB) xfer(KiB)  open(s)    wr/rd(s)   close(s)   total(s)   iter
+------    ---------  ----       ----------  ---------- ---------  --------   --------   --------   --------   ----
+write     4.40       1125.55    0.000116    6291456    4.00       0.002933   182.67     0.587071   182.67     0   
+read      7.21       1845.56    0.000062    6291456    4.00       0.003528   111.40     16.44      111.40     0   
+
+Summary of all tests:
+Operation   Max(MiB)   Min(MiB)  Mean(MiB)     StdDev   Max(OPs)   Min(OPs)  Mean(OPs)     StdDev    Mean(s) Stonewall(s) Stonewall(MiB) Test# #Tasks tPN reps fPP reord reordoff reordrand seed segcnt   blksiz    xsize aggs(MiB)   API RefNum
+write           4.40       4.40       4.40       0.00    1125.54    1125.54    1125.54       0.00  182.67003         NA            NA     0    128  64    1   0     0        1         0    0      1 6442450944     4096     803.1 posix      0
+read            7.21       7.21       7.21       0.00    1845.55    1845.55    1845.55       0.00  111.40451         NA            NA     0    128  64    1   0     0        1         0    0      1 6442450944     4096     803.1 posix      0
+Finished            : Fri Mar  6 01:10:16 2026
