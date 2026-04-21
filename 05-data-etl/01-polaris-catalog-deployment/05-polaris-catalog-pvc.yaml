@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: polaris-data
+  namespace: polaris-tsdb-catalog
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: rbd-nvme-xfs-replica       # <-- TODO: replace this with the name of your StorageClass

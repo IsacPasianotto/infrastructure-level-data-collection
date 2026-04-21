@@ -1,0 +1,51 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: polaris-postgres
+  namespace: polaris-tsdb-catalog
+spec:
+  instances: 3
+
+  storage:
+    size: 20Gi
+    storageClass: rbd-nvme-xfs-replica              # <-- TODO: replace this (check which storage classes are available)
+
+  bootstrap:
+    initdb:
+      database: polaris
+      owner: polaris
+      secret:
+        name: postgres-credentials
+
+  superuserSecret:
+    name: postgres-credentials
+
+  resources:
+    requests:
+      cpu: "1"
+      memory: 2Gi
+    limits:
+      cpu: "2"
+      memory: 4Gi
+
+  affinity:
+    enablePodAntiAffinity: true
+
+
+  # --- Optional Backup configuration
+  # backup:
+  #   retentionPolicy: "7d"
+  #   barmanObjectStore:
+  #     destinationPath: "s3://k8sbackup-polaris-catalog/"           # <-- TODO: replace this
+  #     endpointURL: "http://<YOUR_S3_ENDPOINT_FOR_BACKUP>"          # <-- TODO: replace this
+  #     s3Credentials:
+  #       accessKeyId:
+  #         name: cnpg-polaris-backups3
+  #         key: AWS_ACCESS_KEY_ID
+  #       secretAccessKey:
+  #         name: cnpg-polaris-backups3
+  #         key: AWS_SECRET_ACCESS_KEY
+  #     wal:
+  #       compression: gzip
+  #       maxParallel: 2

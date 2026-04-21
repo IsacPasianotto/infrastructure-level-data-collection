@@ -1,0 +1,45 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: polaris-bootstrap
+  namespace: polaris-tsdb-catalog
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: polaris-bootstrapper
+        image: apache/polaris-admin-tool:1.3.0-incubating
+        args:
+          - bootstrap
+          - -r
+          - POLARIS
+          - -c
+          - $(BOOTSTRAP_CREDENTIAL)
+        env:
+        - name: POLARIS_PERSISTENCE_TYPE
+          value: "relational-jdbc"
+        - name: QUARKUS_DATASOURCE_JDBC_URL
+          value: "jdbc:postgresql://polaris-postgres-rw.polaris-tsdb-catalog.svc.cluster.local:5432/polaris?currentSchema=polaris_schema"
+        - name: QUARKUS_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: postgres-credentials
+              key: user
+        - name: QUARKUS_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-credentials
+              key: password
+        - name: BOOTSTRAP_CREDENTIAL
+          valueFrom:
+            secretKeyRef:
+              name: polaris-credentials
+              key: bootstrapcredentials
+        resources:
+          limits:
+            memory: "1024Mi"
+            cpu: "1000m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"

@@ -1,0 +1,138 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: polaris-catalog
+  namespace: polaris-tsdb-catalog
+  labels:
+    app: polaris
+    component: catalog
+spec:
+  replicas: 1
+  # Ensure resource relealse before restarting
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: polaris
+  template:
+    metadata:
+      labels:
+        app: polaris
+    spec:
+      containers:
+      - name: polaris
+        image: apache/polaris:1.3.0-incubating
+        ports:
+        - containerPort: 8181
+          name: http
+        - containerPort: 8182
+          name: management
+        # ---- Env vars to set up
+        env:
+        # Persistence (PostgreSQL JDBC)
+        - name: AWS_ENDPOINT_URL_S3
+          value: "https://<YOUR_S3_ENDPOINT>"                                       # <-- TODO: replace this
+        - name: POLARIS_STORAGE_VENDED_CREDENTIALS_ENABLED
+          value: "false"
+        - name: POLARIS_STORAGE_ALLOW_EXTERNAL_UNVENDED_STORAGE
+          value: "true"
+        - name: POLARIS_STORAGE_S3_STS_ENABLED
+          value: "false"
+        - name: POLARIS_PERSISTENCE_TYPE
+          value: "relational-jdbc"
+        - name: POLARIS_PERSISTENCE_RELATIONAL_JDBC_MAX_RETRIES
+          value: "5"
+        - name: POLARIS_PERSISTENCE_RELATIONAL_JDBC_INITIAL_DELAY_IN_MS
+          value: "100"
+        - name: POLARIS_PERSISTENCE_RELATIONAL_JDBC_MAX_DURATION_IN_MS
+          value: "5000"
+        - name: QUARKUS_DATASOURCE_DB_KIND
+          value: "postgresql"
+        - name: QUARKUS_DATASOURCE_JDBC_URL
+          value: "jdbc:postgresql://polaris-postgres-rw.polaris-tsdb-catalog.svc.cluster.local:5432/polaris?currentSchema=polaris_schema"
+        - name: QUARKUS_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: postgres-credentials
+              key: user
+        - name: QUARKUS_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-credentials
+              key: password
+        - name: POLARIS_REALM_CONTEXT_REALMS
+          value: "POLARIS"
+        # Increase token lifespan to 27 hours
+        - name: QUARKUS_OAUTH2_TOKEN_LIFESPAN
+          value: "98800"
+        # ------- S3 configuration ------
+        # S3 Configuration
+        - name: QUARKUS_S3_ENDPOINT_OVERRIDE
+          valueFrom:
+            configMapKeyRef:
+              name: questdb-exporter-config
+              key: S3_ENDPOINT
+        - name: QUARKUS_S3_AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: questdb-exporter-config
+              key: AWS_REGION
+        - name: QUARKUS_S3_AWS_CREDENTIALS_TYPE
+          value: "static"
+        - name: QUARKUS_S3_PATH_STYLE_ACCESS
+          value: "true"
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: polaris-dply-s3-credentials
+              key: access-key
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: polaris-dply-s3-credentials
+              key: secret-key
+        # -------- aws envs ---------
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: questdb-exporter-config
+              key: AWS_REGION
+        - name: S3_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              name: questdb-exporter-config
+              key: S3_ENDPOINT
+
+        # ------- Resources ------
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"
+            cpu: "500m"
+
+        volumeMounts:
+        - name: polaris-data
+          mountPath: /var/polaris
+
+        # livenessProbe:
+        #   httpGet:
+        #     path: /q/health/live
+        #     port: 8182
+        #   initialDelaySeconds: 30
+        #   periodSeconds: 10
+        #   failureThreshold: 3
+        # readinessProbe:
+        #   httpGet:
+        #     path: /q/health/ready
+        #     port: 8182
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 5
+        #   failureThreshold: 3
+
+      volumes:
+      - name: polaris-data
+        persistentVolumeClaim:
+          claimName: polaris-data

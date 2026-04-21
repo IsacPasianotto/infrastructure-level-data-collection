@@ -3,6 +3,8 @@
 !/data/experiments/
 !/data/experiments/experiments.parquet
 
+/questdb-parquet-data/*
+
 # --- env files
 **/.env
 
@@ -14,6 +16,9 @@ env/
 
 # --- jupyter
 **/.ipynb_checkpoints/
+
+# --- Other
+05-data-etl/02-polaris-catalog-setup/polaris-pyiceberg-principal.env
 
 # Isac
 **/.DS_Store

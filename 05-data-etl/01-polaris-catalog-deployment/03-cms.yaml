@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: questdb-exporter-config
+  namespace: polaris-tsdb-catalog
+data:
+  #  --- QuestDB Configuration
+  QUESTDB_URL: "https://<YOUR_QUESTDB_URL>"                                    # <-- TODO: replace this
+  QUESTDB_TIMEOUT: "300"
+  QUESTDB_VERIFY_SSL: "false"
+
+  # --- Polaris REST Catalog Configuration
+  POLARIS_URI: "https://<YOUR_POLARIS_CATALOG_URL>/api/catalog"                # <-- TODO: replace this
+
+  # POLARIS_WAREHOUSE: "questdb_archive"
+  POLARIS_WAREHOUSE: "orfeo_tsdb"
+
+  # S3 Storage Configuration
+  S3_ENDPOINT: "https://<YOUR_S3_ENDPOINT>"                                    # <-- TODO: replace this
+
+
+  S3_BUCKET: "orfeo-tsdb"                                                      # <-- TODO: replace this
+  S3_REGION: "eu-south-1"
+  S3_VERIFY_SSL: "true"
+  AWS_REGION: "eu-south-1"
+
+
+  POLARIS_REALM: "POLARIS"
+  POLARIS_MANAGEMENT_URL: "https://<YOUR_POLARIS_CATALOG_URL>/api/management/v1"       # <-- TODO: replace this
+  POLARIS_CATALOG_NAME: "hpc_observability"                                            # <-- TODO: replace this
+  POLARIS_CATALOG_BASE_LOCATION: "s3://hpc-observability-dataset/"                     # <-- TODO: replace this
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: polaris-config
+  namespace: polaris-tsdb-catalog
+data:
+  application.properties: |-
+    # Polaris Bootstrap Configuration
+    polaris.bootstrap=true
+    polaris.bootstrap.realm=POLARIS
+
