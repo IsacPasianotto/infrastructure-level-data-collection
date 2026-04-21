@@ -27,6 +27,7 @@ Notes:
   - [x] Aggiungere i notebook sistemati con il post-process dei dati
   - [ ] Aggiungere 1 notebook per la generazione dei grafici
 - [ ] 04-llm-inference:
+  - [ ] Codice di come abbiamo fatto lo stress test
   - [ ] Aggiungere notebook con i risultati dell'inference
   - [ ] Aggiungere notebook per la generazione dei grafici
 - [ ] 05-data-etl:
