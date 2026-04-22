@@ -43,6 +43,6 @@ popd > /dev/null || exit 1
   - [x] polaris catalog setup
     - [x] Kube deployment
     - [x] Catalog configuration
-  - [ ] Load data into polaris catalog
+  - [x] Load data into polaris catalog
   - [ ] notebook con query di esempio
 - [ ] Fare un giro in tutto il repository per sistemare le licenze con `reuse`

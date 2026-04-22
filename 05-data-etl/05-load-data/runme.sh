@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH -A <your_account>                      # <-- TODO: adjust to your account
-#SBATCH -p <your_partition>                    # <-- TODO: adjust to your partitionß
+#SBATCH -p <your_partition>                    # <-- TODO: adjust to your partition
 #SBATCH --nodes=1
 #SBATCH --mem=126G
 #SBATCH --ntasks-per-node=1
