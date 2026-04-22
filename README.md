@@ -19,7 +19,14 @@ Notes:
 - The istance of QuestDB used to ingestion in all the data the identical to the one deployed in the `00-tsdb-bench` directory, so the configuration and deployment instructions are the same.
 - All the jupyter notebook will refers to data stored into a `data/` directory, which content is not included in the repository (due to the size of the data). The data can be downloaded using the `02-get-data.sh` script, which will download the data from Zenodo.
 - The only exception is the content of a table `experiments` which is not part of the released dataset, but a helper table used to store the metadata of the experiments (e.g. configuration, etc...). This is provided as a `.parquet` file in the `data/` directory.
-
+- All the python code present in the repository is tested with `python3.13.2` and used the `venv` module for the creation of a virtual environment. The dependencies are listed in the `requirements.txt` file. To create a virtual environment and install the dependencies, you can run the following commands:
+```bash
+pushd $(git rev-parse --show-toplevel) > /dev/null || exit 1
+python3.13 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+popd > /dev/null || exit 1
+```
 
 # TODOs:
 
