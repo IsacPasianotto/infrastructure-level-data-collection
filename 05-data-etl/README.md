@@ -14,7 +14,8 @@ TBD.
 ├── 01-polaris-catalog-deployment       --> Polaris Catalog deployment in Kubernetes
 ├── 02-polaris-catalog-setup            --> Polaris Catalog configuration with REST API
 ├── 03-get-data-from-questdb.sh         --> Script to extract data from QuestDB and store it in Parquet format
-├── 04-load-data                        --> Script to load data from Parquet files into Polaris Catalog
-├── 05-query-catalog-example            --> Jupyter notebook with example of how to query the data stored in Polaris Catalog
+├── 04-data-quality-assessment          --> Script to assess the quality of the data in the various table to check for missing data, etc...
+├── 05-load-data                        --> Script to load data from Parquet files into Polaris Catalog
+├── 06-query-catalog-example            --> Jupyter notebook with example of how to query the data stored in Polaris Catalog
 └── README.md                           --> This file
 ```

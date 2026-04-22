@@ -32,7 +32,7 @@ Notes:
   - [ ] Aggiungere notebook per la generazione dei grafici
 - [~] 05-data-etl:
   - [x] download parquet from questdb
-  - [ ] Sanity check dei dati (buchi, etc...)
+  - [X] Sanity check dei dati (buchi, etc...)
   - [x] polaris catalog setup
     - [x] Kube deployment
     - [x] Catalog configuration
