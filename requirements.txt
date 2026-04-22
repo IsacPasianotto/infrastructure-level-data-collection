@@ -8,3 +8,4 @@ seaborn==0.13.2
 pandas==3.0.2
 dotenv==0.9.9
 python-dotenv==1.2.2
+truststore==1.10.4

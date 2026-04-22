@@ -37,12 +37,12 @@ popd > /dev/null || exit 1
   - [ ] Codice di come abbiamo fatto lo stress test
   - [ ] Aggiungere notebook con i risultati dell'inference
   - [ ] Aggiungere notebook per la generazione dei grafici
-- [~] 05-data-etl:
+- [x] 05-data-etl:
   - [x] download parquet from questdb
   - [X] Sanity check dei dati (buchi, etc...)
   - [x] polaris catalog setup
     - [x] Kube deployment
     - [x] Catalog configuration
   - [x] Load data into polaris catalog
-  - [ ] notebook con query di esempio
+  - [x] notebook con query di esempio
 - [ ] Fare un giro in tutto il repository per sistemare le licenze con `reuse`

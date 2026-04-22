@@ -17,9 +17,12 @@ env/
 # --- jupyter
 **/.ipynb_checkpoints/
 
-# --- Other
+# --- Other ETL files
 05-data-etl/02-polaris-catalog-setup/polaris-pyiceberg-principal.env
+05-data-etl/06-query-catalog-example/certs/
+05-data-etl/06-query-catalog-example/read-only-user-creds.env
 
 # Isac
 **/.DS_Store
-05-data-etl/02-polaris-catalog-setup/real-values
+**/real-values
+
