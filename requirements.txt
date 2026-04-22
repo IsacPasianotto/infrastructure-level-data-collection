@@ -2,6 +2,7 @@ polars[rt64]==1.39.3
 numpy==1.26.4
 pyarrow==23.0.1
 pyiceberg==0.11.1
+pyiceberg-core==0.7.0
 matplotlib==3.10.8
 seaborn==0.13.2
 pandas==3.0.2
