@@ -14,7 +14,7 @@ The raw data used to produce these results is available on [Zenodo](https://zeno
 
 ---
 
-## 📊 Experiment Results & Energy Cost
+##  Experiment Results & Energy Cost
 
 | Model | Active GPUs | Tokens/s | Avg Active GPU Usage (%) | Active GPU Energy/1k Tokens (Wh) | Inactive GPU Energy/1k Tokens (Wh) | CPU Energy/1k Tokens (Wh) | System Energy/1k Tokens (Wh) | Adjusted Total Energy/1k Tokens (Wh) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -29,7 +29,7 @@ The raw data used to produce these results is available on [Zenodo](https://zeno
 
 ---
 
-## ⚡ Datacenter PUE
+##  Datacenter PUE
 
 The following chart illustrates the Power Usage Effectiveness (PUE) correlated with weather conditions during the benchmarking period.
 
