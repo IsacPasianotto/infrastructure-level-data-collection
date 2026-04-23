@@ -45,4 +45,5 @@ popd > /dev/null || exit 1
     - [x] Catalog configuration
   - [x] Load data into polaris catalog
   - [x] notebook con query di esempio
+- [ ] PUE (dove lo mettiamo?)
 - [ ] Fare un giro in tutto il repository per sistemare le licenze con `reuse`
