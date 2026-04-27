@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # IOR compilation
 
 In order to build IOR, with parallel HDF5 support, we need to first build HDF5 with the right options.

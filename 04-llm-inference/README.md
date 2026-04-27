@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # 04 - LLM Inference & Energy Cost Analysis
 
 This folder contains the software used to run a stress test on a vLLM deployment, measure the statistics of each API call (e.g., token count), and correlate those stats with the GPU nodes telemetry on Kubernetes. Combined with the datacenter PUE (Power Usage Effectiveness), this provides a comprehensive analysis of inference costs. 

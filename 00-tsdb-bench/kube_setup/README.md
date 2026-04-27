@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Kubernetes setup
 
 First of all, create a `.env-kube` file with the follwoing content:

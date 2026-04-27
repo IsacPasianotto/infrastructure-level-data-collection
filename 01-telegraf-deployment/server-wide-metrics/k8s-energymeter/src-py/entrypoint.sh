@@ -1,5 +1,10 @@
 #!/usr/bin/bash
 
+# SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+# SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 # --- paths (adatta se necessario) ---
 
 SCRIPT_PATH="/app/api.py"

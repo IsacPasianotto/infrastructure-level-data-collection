@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Polaris catalog Kubernetes deployment
 
 This folder contains all the code used to deploy an apache polaris catalog on a bare-metal Kubernetes cluster, with the aim of using it as a data catalog for the data collected from the infrastructure.

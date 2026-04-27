@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Data ETL (Extraction, Transformation, Loading) pipeline
 
 In this folder is contained all the code related to the data ETL pipeline. 

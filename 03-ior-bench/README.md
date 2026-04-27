@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # IOR benchmark case of study
 
 ***Step 0: Prerequisites***:  Follow the instructions in [this README](./00-prereq/README.md) to build the required dependencies (IOR) and create the corresponding modules.
