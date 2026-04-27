@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+# SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 # ---- color definitions  -----
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'

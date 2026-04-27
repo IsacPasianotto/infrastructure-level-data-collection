@@ -1,3 +1,8 @@
+-- SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+-- SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+--
+-- SPDX-License-Identifier: CC-BY-4.0
+
 -- -*- lua -*-
 local name      = "HDF5"
 local version   = "1.14.6"

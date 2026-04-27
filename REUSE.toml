@@ -1,0 +1,68 @@
+# SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+# SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+#
+# SPDX-License-Identifier: CC-BY-4.0
+
+version = 1
+SPDX-PackageName = "infrastructure-level-datal-collection"
+SPDX-PackageSupplier = "Isac Pasianotto <isac.pasianotto@phd.units.it"
+SPDX-PackageDownloadLocation = "https://github.com/IsacPasianotto/infrastructure-level-data-collection/"
+
+[[annotations]]
+path = [
+  "00-tsdb-bench/results/**",
+  "03-ior-bench/results/**",
+  "04-llm-inference/results/**",
+]
+precedence = "override"
+SPDX-FileCopyrightText = [
+  "2026 Isac Pasianotto <isac.pasianotto@phd.units.it>",
+  "2026 Niccolo Tosato <niccolo.tosato@phd.units.it>",
+]
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = [
+  "00-tsdb-bench/post-process-load.ipynb",
+  "03-ior-bench/data-analysis/example-plots.ipynb",
+  "03-ior-bench/data-analysis/HDD-analysis.ipynb",
+  "03-ior-bench/data-analysis/NVMe-analysis.ipynb",
+  "05-data-etl/06-query-catalog-example/01-simple-query.ipynb",
+  "04-llm-inference/data-analysis/llm-inference.ipynb",
+  "04-llm-inference/data-analysis/PUE.ipynb",
+]
+precedence = "override"
+SPDX-FileCopyrightText = [
+  "2026 Isac Pasianotto <isac.pasianotto@phd.units.it>",
+  "2026 Niccolo Tosato <niccolo.tosato@phd.units.it>"
+]
+SPDX-License-Identifier = "GPL-3.0-or-later"
+
+[[annotations]]
+path = "**/.parquet"
+precedence = "override"
+SPDX-FileCopyrightText = [
+  "2026 Isac Pasianotto <isac.pasianotto@phd.units.it>",
+  "2026 Niccolo Tosato <niccolo.tosato@phd.units.it>",
+]
+SPDX-License-Identifier = "CC-BY-4.0"
+
+
+[[annotations]]
+path = "01-telegraf-deployment/server-wide-metrics/quadlet-pdu/.ssh/**"
+precedence = "override"
+SPDX-FileCopyrightText = [
+  "2026 Isac Pasianotto <isac.pasianotto@phd.units.it>",
+  "2026 Niccolo Tosato <niccolo.tosato@phd.units.it>",
+]
+SPDX-License-Identifier = "CC-BY-4.0"
+
+[[annotations]]
+path = "04-llm-inference/00-locust-benchmark/prompt.txt"
+precedence = "override"
+SPDX-FileCopyrightText = [
+  "2026 Isac Pasianotto <isac.pasianotto@phd.units.it>",
+  "2026 Niccolo Tosato <niccolo.tosato@phd.units.it>",
+]
+SPDX-License-Identifier = "CC-BY-4.0"
+

@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Query catalog example
 
 This folder contains a simple example of how to query the catalog using the Python Iceberg client. The example is implemented in the `01-simple-query.ipynb` notebook, which can be run in a Jupyter environment.

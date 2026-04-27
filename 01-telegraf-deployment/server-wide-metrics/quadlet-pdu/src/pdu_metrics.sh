@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+# SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 SCRIPT="/root/isac/metrics.sh"
 CSV_FILE="/root/isac/connection.csv"
 

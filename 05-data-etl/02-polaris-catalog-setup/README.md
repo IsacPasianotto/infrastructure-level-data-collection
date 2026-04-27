@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Polaris catalog setup
 
 Once the polaris instance is deployed in the cluster, before being able to use it as a data catalog for the data collected from the infrastructure, it is needed to be configured. 

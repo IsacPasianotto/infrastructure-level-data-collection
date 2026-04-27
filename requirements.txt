@@ -1,3 +1,8 @@
+# SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+# SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+#
+# SPDX-License-Identifier: CC-BY-4.0
+
 polars[rt64]==1.39.3
 numpy==1.26.4
 pyarrow==23.0.1

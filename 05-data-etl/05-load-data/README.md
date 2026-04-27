@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2026 Isac Pasianotto <isac.pasianotto@phd.units.it>
+SPDX-FileCopyrightText: 2026 Niccolo Tosato <niccolo.tosato@phd.units.it>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Loading data into the data catalog
 
 Before to start, if the bucket in which you want to store the data is not created yet, make sure it exists by running the following command (replace `<bucket-name>` with the name of the bucket you want to create):
